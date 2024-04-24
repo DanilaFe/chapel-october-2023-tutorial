@@ -1,14 +1,51 @@
-# README for Oct 16th Chapel Tutorial
+# Introduction to Chapel
 
-After following the below instructions to install docker on your Mac, Linux, or Windows
-laptop, then do a
-```
-  docker pull docker.io/chapel/chapel-gasnet
+[Chapel](https://github.com/chapel-lang/chapel/) is a programming language for productive parallel computing. This repository contains code from the [October 2023 Tutorial](https://chapel-lang.org/tutorials.html).
+
+To get started with this template, you can either use [GitHub Codespaces](#using-a-codespace) or [your own machine](#using-your-machine).
+
+## Using a Codespace
+
+> :warning: Because Codespaces are a virtualized environment running on shared hardware with a modest core count, don't expect parallelism or performance observed here to be reflective of what a native installation of Chapel can achieve.
+
+This repo includes a `devcontainer.json` file, making it usable from GitHub Codespaces. When viewing this repository from GitHub's UI, click __Use this template > Open in a codespace__ to get started. The codespace includes the Visual Studio Code extension for Chapel, and tools such as [`chpl-language-server`](https://chapel-lang.org/docs/main/tools/chpl-language-server/chpl-language-server.html) and [`chplcheck`](https://chapel-lang.org/docs/main/tools/chplcheck/chplcheck.html).
+
+In the Codespace, compile Chapel programs using the __Terminal__ tab by using the `chpl` compiler:
+
+```bash
+chpl 01-hello.chpl
+./01-hello
 ```
 
-Next follow the instructions at https://hub.docker.com/r/chapel/chapel to compile
-a hello world in Chapel, but use the chapel-gasnet container and when you run the
-“hello” executable specify -nl 1.  Here are the commands to use:
+Although the Codespace is set to a single-locale (single-node) mode by default, you can simulate multiple nodes by setting the `CHPL_COMM` environment variable to `gasnet` when compiling.
+
+```bash
+# Compile a program that distributes computation to multiple nodes
+CHPL_COMM=gasnet chpl 01-hellopar.chpl
+
+# Run hello using two simulated nodes
+./01-hellopar -nl 2
+```
+
+To avoid having to include `CHPL_COMM` in each compilation command, you can
+`export` it:
+
+```bash
+export CHPL_COMM=gasnet
+chpl 01-hellopar.chpl
+./01-hellopar -nl 2
+```
+
+## Using Docker
+
+Install Docker (see the [Installing Docker](#installing-docker) section below for suggestions). Then, use the following command:
+
+```bash
+docker pull docker.io/chapel/chapel-gasnet
+```
+
+Next follow the instructions at https://hub.docker.com/r/chapel/chapel to compile a hello world in Chapel, but use the `chapel-gasnet` container and when you run the “hello” executable specify `-nl 1`.  Here are the commands to use:
+
 ```
 echo 'writeln("Hello, world!");' > hello.chpl
 
@@ -19,26 +56,17 @@ root@xxxxxxxxx:/myapp# ./hello -nl 1
 Hello, world!
 ```
 
-## Instructions from the "How to do hands on" slide
+## Using Your Machine
 
-Zip file with example codes and slides
-* https://chapel-lang.org/tmp/ChapelTutorialSlidesAndCodes.zip
+Please follow the instructions on the [Download Chapel](https://chapel-lang.org/download.html) page to get set up with the Chapel compiler `chpl`. From there, you can compile and run the `hello.chpl` file in this repository as follows:
 
-Using a container on your laptop
-* First, install docker for your machine and start it up (see the README.md for more info)
-* Then, use the chapel-gasnet docker container
-```
- docker pull docker.io/chapel/chapel-gasnet    # takes about 5 minutes
- cd ChapelTutorialSlidesAndCodes   # assuming zip file has been unzipped
- docker run --rm -it -v "$PWD":/myapp -w /myapp chapel/chapel-gasnet /bin/bash
- root@xxxxxxxxx:/myapp# chpl 01-hello.chpl
- root@xxxxxxxxx:/myapp# ./01-hello -nl 1
+```bash
+chpl 01-hello.chpl
+./01-hello
 ```
 
-Attempt this Online website for running Chapel code
-* Go to main Chapel webpage at https://chapel-lang.org/
-* Click on the little ATO icon on the lower left that is above the YouTube icon
-
+To make use of multiple nodes (or to simulate multi-node execution), please
+refer to [Multilocale Chapel Execution](https://chapel-lang.org/docs/usingchapel/multilocale.html).
 
 ## Installing Docker
 

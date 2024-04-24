@@ -4,6 +4,19 @@
 
 To get started with this template, you can either use [GitHub Codespaces](#using-a-codespace) or [your own machine](#using-your-machine).
 
+The files in this repository correspond to slide decks from the tutorial.
+Specifically, the prefix number of each file (the `01` in `01-hello.chpl`)
+determines which slide deck walks through that particular file. Please
+consult the following table for links to the individual slide decks.
+
+| Prefix | Example File    | Slide Deck |
+|--------|-----------------|------------|
+| `01`   | `01-hello.chpl` | [Introduction to Chapel](https://chapel-lang.org/tutorials/Oct2023/01-Chapel-Intro.pdf) |
+| `02`   | `02-tuples.chpl` | [Chapel Basics](https://chapel-lang.org/tutorials/Oct2023/02-Chapel-Basics.pdf) |
+| `03`   | `03-onClause.chpl` | [Parallelism In Chapel](https://chapel-lang.org/tutorials/Oct2023/03-Chapel-Parallelism.pdf) |
+| `04`   | `04-atomic-type.chpl` | [More Parallelism](https://chapel-lang.org/tutorials/Oct2023/04-Chapel-MorePar.pdf) |
+
+
 ## Using a Codespace
 
 > :warning: Because Codespaces are a virtualized environment running on shared hardware with a modest core count, don't expect parallelism or performance observed here to be reflective of what a native installation of Chapel can achieve.

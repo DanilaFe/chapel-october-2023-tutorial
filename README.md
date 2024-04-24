@@ -2,7 +2,7 @@
 
 [Chapel](https://github.com/chapel-lang/chapel/) is a programming language for productive parallel computing. This repository contains code from the [October 2023 Tutorial](https://chapel-lang.org/tutorials.html).
 
-To get started with this template, you can either use [GitHub Codespaces](#using-a-codespace) or your own machine (via [Docker](#using-docker) or [natively](#using-chapel-natively-on-your-machine)).
+To get started with this template, you can either use [GitHub Codespaces](#using-a-codespace) or your own machine (via [Docker](#using-docker) or by [building from source](#building-chapel-from-source-on-your-machine)).
 
 The files in this repository correspond to slide decks from the tutorial.
 Specifically, the prefix number of each file (the `01` in `01-hello.chpl`)
@@ -69,9 +69,9 @@ root@xxxxxxxxx:/myapp# ./hello -nl 1
 Hello, world!
 ```
 
-## Using Chapel Natively Your Machine
+## Building Chapel from Source on Your Machine
 
-Please follow the instructions on the [Download Chapel](https://chapel-lang.org/download.html) page to get set up with the Chapel compiler `chpl`. From there, you can compile and run the `hello.chpl` file in this repository as follows:
+Please follow the instructions on the [Download Chapel](https://chapel-lang.org/download.html) page to build the Chapel compiler and runtime from source and get set up with the Chapel compiler executable `chpl`. From there, you can compile and run the `01-hello.chpl` file in this repository as follows:
 
 ```bash
 chpl 01-hello.chpl
